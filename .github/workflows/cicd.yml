@@ -33,7 +33,7 @@ jobs:
 
     - name: Verify Maven version
       run: mvn -version
-      
+
     - name: Update version
       id: update_version
       run: |

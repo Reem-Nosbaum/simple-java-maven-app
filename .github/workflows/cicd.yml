@@ -20,7 +20,7 @@ jobs:
         java-version: '17'
         distribution: 'temurin'
         cache: maven
-
+        
     - name: Install Maven 3.9.2
       run: |
         MAVEN_VERSION=3.9.2
@@ -33,7 +33,7 @@ jobs:
 
     - name: Verify Maven version
       run: mvn -version
-
+      
     - name: Update version
       id: update_version
       run: |

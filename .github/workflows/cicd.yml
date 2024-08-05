@@ -68,7 +68,7 @@ jobs:
         path: target/*.jar
 
     - name: Debug Docker Tag
-      run: echo "Docker Tag:${{ env.new_version_docker }}"
+      run: echo "Docker Tag: ${{ env.new_version_docker }}"
 
     - name: Ensure valid Docker tag format
       run: |

@@ -20,7 +20,7 @@ jobs:
         java-version: '17'
         distribution: 'temurin'
         cache: maven
-
+        
     - name: Install Maven 3.9.2
       run: |
         MAVEN_VERSION=3.9.2
@@ -45,7 +45,9 @@ jobs:
         NEW_PATCH=$((PATCH+1))
         NEW_VERSION=$(echo $VERSION | sed "s/$PATCH\$/$NEW_PATCH/")
         mvn versions:set -DnewVersion=$NEW_VERSION
+        NEW_VERSION_DOCKER=$(echo $NEW_VERSION | sed "s/-SNAPSHOT//")
         echo "new_version=$NEW_VERSION" >> $GITHUB_ENV
+        echo "new_version_docker=$NEW_VERSION_DOCKER" >> $GITHUB_ENV
 
     - name: Build with Maven
       run: mvn -B package --file pom.xml
@@ -77,4 +79,4 @@ jobs:
         context: .
         file: ./Dockerfile
         push: true
-        tags: ${{ secrets.DOCKER_USERNAME }}/simple-java-maven-app:${{ env.new_version }}
+        tags: ${{ secrets.DOCKER_USERNAME }}/simple-java-maven-app:${{ env.new_version_docker }}

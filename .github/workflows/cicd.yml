@@ -20,8 +20,8 @@ jobs:
         java-version: '17'
         distribution: 'temurin'
         cache: maven
-        
-		- name: Install Maven 3.9.2
+
+    - name: Install Maven 3.9.2
       run: |
         MAVEN_VERSION=3.9.2
         wget https://archive.apache.org/dist/maven/maven-3/$MAVEN_VERSION/binaries/apache-maven-$MAVEN_VERSION-bin.tar.gz
